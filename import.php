@@ -38,8 +38,8 @@ echo "transform ok";
 $result = $proc->transformToXML($xml);
 
 
-echo dir_copy("C:/Documents and Settings/Gjergj Sheldija/My Documents/Movie Collector/Images","C:/xampp/htdocs/edvini/img/Images");
-echo dir_copy("C:/Documents and Settings/Gjergj Sheldija/My Documents/Movie Collector/Thumbnails","C:/xampp/htdocs/edvini/img/Thumbnails");
+echo dir_copy( $MCImagesDir,$PMDImagesDir);
+echo dir_copy( $MCThumbnailsDir , $PMDThumbnailsDir);
 
 $result = explode(";\n",$result);
 
@@ -47,11 +47,12 @@ $link = mysql_connect($hostname, $username, $password);
 if (!$link) {
     die('Could not connect: ' . mysql_error());
 }
+
 mysql_select_db($database, $link) or die('Could not select database.');
 
 foreach($result as $id => $data ) {
 	$first_pass = str_replace('\\','/',$data);
-	$second_pass = str_replace("C:/Documents and Settings/Gjergj Sheldija/My Documents/Movie Collector/","img/",$first_pass);
+	$second_pass = str_replace($strToReplace ,"img/",$first_pass);
 	$query = mysql_query($second_pass );
 	if (!$query) {
 	    die('Invalid query: ' . mysql_error());
@@ -60,8 +61,6 @@ foreach($result as $id => $data ) {
 
 mysql_close($link);
 
-echo dir_copy("C:/Documents and Settings/Gjergj Sheldija/My Documents/Movie Collector/Images","C:/xampp/htdocs/edvini/img/Images");
-echo dir_copy("C:/Documents and Settings/Gjergj Sheldija/My Documents/Movie Collector/Thumbnails","C:/xampp/htdocs/edvini/img/Thumbnails");
 
 function dir_copy($srcdir, $dstdir, $offset = '', $verbose = false) {
     if(!isset($offset)) $offset=0;

@@ -36,6 +36,14 @@ $version = "1.0.1";
 $site = "http://localhost/php-movie-db/";
 $display_chunk = 100;
 
+//import directives
+$MCImagesDir = "/media/windows/Documents and Settings/Gjergj Sheldija/My Documents/Movie Collector/Images";
+$PMDImagesDir = "/var/www/php-movie-db/img/Images";
+$MCThumbnailsDir = "/media/windows/Documents and Settings/Gjergj Sheldija/My Documents/Movie Collector/Thumbnails";
+$PMDThumbnailsDir = "/var/www/php-movie-db/img/Thumbnails";
+
+$strToReplace = "/media/windows/Documents and Settings/Gjergj Sheldija/My Documents/";
+
 //user id and password
 $rooter_id="user";
 $rooter_phrase="password";
