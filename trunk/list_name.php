@@ -21,7 +21,6 @@
  * THE SOFTWARE.
  */
 
-session_start();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -38,29 +37,27 @@ session_start();
 <body>
 <div id="content">
 <center>
+<a href="javascript:history.go(-1)"><img src="img/previous.png"></a>&nbsp;&nbsp;<a href='index.php'><img src="img/home.png"></a>
 <?php
-require 'dbmodel.php';
-require 'utils.php';
+require_once 'dbmodel.php';
+require_once 'utils.php';
+require_once 'inifile.php';
+
+$iniFile = new INIFile('config.ini');
+$display_chunk = $iniFile->getValue('display_chunk','user_config');
 
 global $view;
 global $is_search;
 
-$logged_in = false;
-
-if (authenticated($_SESSION['user'],$_SESSION['pass'])) {
-	$logged_in = true;
-} else {
-	$logged_in = false;
-}
 
 if($_POST[search_string] == NULL || $_POST[search_string] == "")
-$is_search = false;
+	$is_search = false;
 else
-$is_search = true;
+	$is_search = true;
 
 
 if($_GET[letter] == NULL || $_GET[letter] == "" || $_GET[view] == NULL || $_GET[view] == "")
-die("Specifikoni nje germe.");
+	die("Specifikoni nje germe.");
 
 $view = $_GET[view];
 
@@ -71,9 +68,6 @@ if($is_search)
 print "<p class='header'>Rezultatet e kerkimit per : \"$_POST[search_string]\"</p>\n";
 else
 print "<p class='header'>Filmi: $_GET[letter]</p>\n";
-
-if($logged_in)
-echo "Loguar si : " . $_SESSION['user'] . " [<a href='logout.php'>logout</a>]<p>\n";
 
 if($_GET[letter] != "ALL") {
 	print_links($_GET[letter], $view);
@@ -128,9 +122,9 @@ switch ($_GET[sort]) {
 $query = $query . $orderby;
 
 if($_GET[from] != null && $_GET[from] >= 0)
-$query = $query . " LIMIT " . $_GET[from];
+	$query = $query . " LIMIT " . $_GET[from];
 else
-$query = $query . " LIMIT 0";
+	$query = $query . " LIMIT 0";
 
 
 $query = $query . ",$display_chunk";
@@ -142,9 +136,9 @@ if(count($result) == 0) {
 	if($is_search) {
 		print "<br><p class='header'>Asnje film per $_POST[search_string] ";
 		if($_POST[search_type] == "movie")
-		print "Titulli";
+			print "Titulli";
 		else
-		print $_POST[search_type];
+			print $_POST[search_type];
 
 		print "</p><br />\n\n";
 	} else {
@@ -157,23 +151,24 @@ if(count($result) == 0) {
 	print "\n</table>\n\n";
 } else {
 	// Display the results
-	displayMovies($result, $logged_in, $display_chunk);
+	displayMovies($result, $display_chunk);
 }
 
-?> <a href='index.php'><img src="img/home.png"></a>  
+?> 
+<a href="javascript:history.go(-1)"><img src="img/previous.png"></a>&nbsp;&nbsp;<a href='index.php'><img src="img/home.png"></a>
 <?php
 
-function displayMovies($result, $logged_in, $display_chunk) {
+function displayMovies($result, $display_chunk) {
 	global $view;
 	$alter_color = 1;		//var for alternating the background of each row
 	$num_of_rows = count($result);
 
 	if($_GET[dir] == "DESC" || $_GET[dir] == null){
 		$opposite_dir = "ASC";
-		$image = "img/arrow_up.png";
+		$image = "img/arrow-up.png";
 	} else {
 		$opposite_dir = "DESC";
-		$image = "img/arrow_down.png";
+		$image = "img/arrow-down.png";
 	}
 	// Start a table, with column headers
 	print "\n<table  border=\"0\" width=\"98%\" cellspacing=\"1\" cellpadding=\"4\">\n<tr align=\"center\"> \n";
@@ -201,11 +196,6 @@ function displayMovies($result, $logged_in, $display_chunk) {
 		print "\n\t<td><a href=\"show_movie.php?movie=" . $movie['id'] . "\"><img src=\"$movie[thumbnail]\"></a></td>";
 		print "\n\t<td><a href=\"show_movie.php?movie=" . $movie['id'] . "\">" . $movie[movie] ."</a>";
 
-		if($logged_in) {
-	 		print " [<a href=\"edit_movie.php?movie=" . $movie['id'] . "\">ndrysho</a> / ";
-	 		print " <a href=\"remove_movie.php?movie=" . $movie['id'] . "\">fshij</a>]";
-		}
-
 		print "</td>\n\t<td align=\"left\">";
 		if($movie['plot'] != NULL || $movie['plot'] != "")		//if a description exists, show icon
 		//print substr($movie['plot'],0,60) . "...";
@@ -231,16 +221,16 @@ function displayMovies($result, $logged_in, $display_chunk) {
 			print "'><< Prapa $display_chunk Filma</a> | ";
 		}
 
-	 print "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=$_GET[sort]&amp;dir=$_GET[dir]&amp;from=";
-	 $offset = $_GET[from] + $display_chunk;
-	 print $offset;
-	 print "'>Para $display_chunk Filma >></a>";
+		 print "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=$_GET[sort]&amp;dir=$_GET[dir]&amp;from=";
+		 $offset = $_GET[from] + $display_chunk;
+		 print $offset;
+		 print "'>Para $display_chunk Filma >></a>";
 
 	} else if ($num_of_rows < $display_chunk && ($_GET[from] - $display_chunk) > 0) {
-	 print "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=$_GET[sort]&amp;dir=$_GET[dir]&amp;from=";
-	 $offset = $_GET[from] - $display_chunk;
-	 print $offset;
-	 print "'><< Prapa $display_chunk Filma</a>";
+		 print "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=$_GET[sort]&amp;dir=$_GET[dir]&amp;from=";
+		 $offset = $_GET[from] - $display_chunk;
+		 print $offset;
+		 print "'><< Prapa $display_chunk Filma</a>";
 	}
 	print "\n<p><br /><br />\n";
 }
