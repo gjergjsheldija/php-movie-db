@@ -27,13 +27,13 @@ ini_set('arg_separator.output','&amp;');
 $hostname = "localhost";
 $database = "movies";
 $username = "root";
-$password = "";
+$password = "root";
 
 //general config param
-$your_full_name = "Edvin Puka";
+$your_full_name = "Sample User";
 $app_name = "Video Store";
 $version = "1.0.1";
-$site = "http://localhost/rooter-1.0.1/";
+$site = "http://localhost/php-movie-db/";
 $display_chunk = 100;
 
 //user id and password
