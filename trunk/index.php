@@ -32,7 +32,7 @@ require 'utils.php';
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta name="generator" content="Rooter <?php echo $version;?>">
+<meta name="generator" content="PMD <?php echo $version;?>">
 <link rel="stylesheet" type="text/css" href="style/style.css">
 <title><?php echo "DBF " . $version . ": " . $your_full_name; ?>Filma</title>
 </head>
