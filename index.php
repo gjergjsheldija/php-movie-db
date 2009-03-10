@@ -21,9 +21,12 @@
  * THE SOFTWARE.
  */
 
-session_start();
-require 'dbmodel.php';
-require 'utils.php';
+require_once 'dbmodel.php';
+require_once 'utils.php';
+
+$iniFile = new INIFile('config.ini');
+$app_name = $iniFile->getValue('app_name','user_config');
+$version = $iniFile->getValue('version','user_config');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"

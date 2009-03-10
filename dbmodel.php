@@ -20,17 +20,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-require 'config.php';
+
+require_once 'inifile.php';
 
 class dbmodel {
 
 	protected static $dbh = false;
 
 	function connect() {
-		global $password;
-		global $username;
-		global $hostname;
-		global $database;
+		$iniFile = new INIFile('config.ini');
+		$password = $iniFile->getValue('password','database');
+		$username = $iniFile->getValue('username','database');
+		$hostname = $iniFile->getValue('hostname','database');
+		$database = $iniFile->getValue('database','database');
 		
 		self::$dbh = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
 		self::$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

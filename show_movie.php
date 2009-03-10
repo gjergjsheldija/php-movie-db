@@ -37,9 +37,11 @@ session_start();
 
 <body>
 <div id="content">
-<center><?php
-require 'dbmodel.php';
-require 'utils.php';
+<center>
+<a href="javascript:history.go(-1)"><img src="img/previous.png"></a>&nbsp;&nbsp;<a href='index.php'><img src="img/home.png"></a>
+<?php
+require_once 'dbmodel.php';
+require_once 'utils.php';
 
 $movie_id = (int)$_GET[movie];
 
@@ -115,7 +117,7 @@ function displayMovie($movie)  {
 
 
 <br>
-<a href='index.php'><img src="img/home.png"></a>
+<a href="javascript:history.go(-1)"><img src="img/previous.png"></a>&nbsp;&nbsp;<a href='index.php'><img src="img/home.png"></a>
 
 </center>
 </div>

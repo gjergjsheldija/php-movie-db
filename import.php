@@ -20,8 +20,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-include 'dbmodel.php';
-include 'config.php';
+require_once 'dbmodel.php';
+
+$iniFile = new INIFile('config.ini');
+$password = $iniFile->getValue('password','database');
+$username = $iniFile->getValue('username','database');
+$hostname = $iniFile->getValue('hostname','database');
+$database = $iniFile->getValue('database','database');
+
+$MCImagesDir = $iniFile->getValue('MCImagesDir','import_directives');
+$MCThumbnailsDir = $iniFile->getValue('MCThumbnailsDir','import_directives');
 
 $xmlDoc = "collectorz.xml";
 $xslDoc = "xml2sql.xsl";
@@ -37,7 +45,21 @@ $proc->importStyleSheet($xsl); // attach the xsl rules
 echo "transform ok";
 $result = $proc->transformToXML($xml);
 
+$scriptPath =  pathinfo($_SERVER['SCRIPT_FILENAME']);
+$PMDImagesDir = $scriptPath['dirname'] . "/img/Images";
+$PMDThumbnailsDir = $scriptPath['dirname'] . "/img/Thumbnails";
 
+$temp = explode(DIRECTORY_SEPARATOR,$MCImagesDir);
+
+
+//heck ..it'll only work on win machines.. :(
+$strToReplace = $temp[0] .
+				DIRECTORY_SEPARATOR . $temp[1] .
+				DIRECTORY_SEPARATOR . $temp[2] .
+				DIRECTORY_SEPARATOR . $temp[3] .
+				DIRECTORY_SEPARATOR . $temp[4] .
+				DIRECTORY_SEPARATOR . $temp[5];
+				
 echo dir_copy( $MCImagesDir,$PMDImagesDir);
 echo dir_copy( $MCThumbnailsDir , $PMDThumbnailsDir);
 
