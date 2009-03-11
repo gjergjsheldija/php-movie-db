@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PHP Movie DB\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-11 18:20+0100\n"
+"POT-Creation-Date: 2009-03-11 19:16+0100\n"
 "PO-Revision-Date: 2009-03-11 01:38+0100\n"
 "Last-Translator: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
 "Language-Team: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
@@ -115,7 +115,7 @@ msgstr "Katalogu i filmave i"
 msgid "Rezultatet e kerkimit per"
 msgstr "Rezultatet e kerkimit per"
 
-#: list_name.php:68 list_name.php:177 show_movie.php:70 show_movie.php:92
+#: list_name.php:68 list_name.php:177 show_movie.php:74 show_movie.php:96
 msgid "Filmi"
 msgstr "Filmi"
 
@@ -139,7 +139,7 @@ msgstr "Kopertina"
 msgid "Pershkrimi"
 msgstr "Pershkrimi"
 
-#: list_name.php:181 show_movie.php:100
+#: list_name.php:181 show_movie.php:104
 msgid "Viti"
 msgstr "Viti"
 
@@ -167,26 +167,30 @@ msgstr "Kopertina mungon"
 msgid "Kopertina"
 msgstr "Kopertina"
 
-#: show_movie.php:74
+#: show_movie.php:70
+msgid "Kodi"
+msgstr "Kodi i filmit"
+
+#: show_movie.php:78
 msgid "Regjizori"
 msgstr "Regjizori"
 
-#: show_movie.php:78
+#: show_movie.php:82
 msgid "Gjinia"
 msgstr "Gjinia"
 
-#: show_movie.php:82
+#: show_movie.php:86
 msgid "Kohezgjatja"
 msgstr "Kohezgjatja"
 
-#: show_movie.php:87
+#: show_movie.php:91
 msgid "Personazhet / Aktoret"
 msgstr "Personazhet / Aktoret"
 
-#: show_movie.php:96
+#: show_movie.php:100
 msgid "Studio"
 msgstr "Studio"
 
-#: show_movie.php:104
+#: show_movie.php:108
 msgid "Sinopsis"
 msgstr "Sinopsis"

@@ -69,7 +69,7 @@ $strToReplace = $temp[0] .
 				DIRECTORY_SEPARATOR . $temp[5];
 				
 
-			
+//$strToReplace = "C:/Documents and Settings/Gjergj Sheldija/My Documents/Movie Collector/";				
 echo dir_copy( $MCImagesDir,$PMDImagesDir);
 echo dir_copy( $MCThumbnailsDir , $PMDThumbnailsDir);
 
