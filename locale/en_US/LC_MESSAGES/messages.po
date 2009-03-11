@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PHP Movie DB\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-11 00:27+0100\n"
+"POT-Creation-Date: 2009-03-11 18:20+0100\n"
 "PO-Revision-Date: 2009-03-11 01:09+0100\n"
 "Last-Translator: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
 "Language-Team: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
@@ -17,35 +17,35 @@ msgstr ""
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED STATES\n"
 
-#: configuration.php:67
+#: configuration.php:66
 msgid "Te dhenat baze"
 msgstr "Basic Info"
 
-#: configuration.php:71
+#: configuration.php:70
 msgid "Host"
 msgstr "Host"
 
-#: configuration.php:79
+#: configuration.php:78
 msgid "Db"
 msgstr "Database"
 
-#: configuration.php:87
+#: configuration.php:86
 msgid "User"
 msgstr "Perdoruesi"
 
-#: configuration.php:95
+#: configuration.php:94
 msgid "Password"
 msgstr "Fjalekalimi"
 
-#: configuration.php:122
+#: configuration.php:121
 msgid "Te dhenat per file"
 msgstr "File Info"
 
-#: configuration.php:126
+#: configuration.php:125
 msgid "MCImagesDir"
 msgstr "MC image directory"
 
-#: configuration.php:134
+#: configuration.php:133
 msgid "MCThumbnailsDir"
 msgstr "MC thumbnails directory"
 
@@ -65,134 +65,130 @@ msgstr "Site path"
 msgid "display_chunk"
 msgstr "Elements per page"
 
-#: index.php:60
+#: configuration.php:192
+msgid "language"
+msgstr "Language"
+
+#: index.php:58
 msgid "Ne baze te titullit"
 msgstr "Order by title"
 
-#: index.php:91
+#: index.php:89
 msgid "Shih"
 msgstr "Select"
 
-#: index.php:93
+#: index.php:91
 msgid "Te gjithe filmat"
 msgstr "All the movies"
 
-#: index.php:97
+#: index.php:95
 msgid "Kerko"
 msgstr "Search"
 
-#: index.php:100
+#: index.php:98
 msgid "kerko"
 msgstr "search"
 
-#: index.php:111
+#: index.php:109
 msgid "Totali"
 msgstr "Total"
 
-#: index.php:115
+#: index.php:113
 msgid "filma"
 msgstr "movi"
 
-#: index.php:117
+#: index.php:115
 msgid "Filmat e rinj "
 msgstr "New movies"
 
-#: list_name.php:34
+#: list_name.php:35
 msgid "Filmat"
 msgstr "Movies"
 
-#: list_name.php:60
+#: list_name.php:58
 msgid "Specifikoni nje germe."
 msgstr "Select a letter"
 
-#: list_name.php:65
+#: list_name.php:63
 msgid "Katalogu i filmave per"
 msgstr "Movie catalogue of"
 
-#: list_name.php:68
+#: list_name.php:66
 msgid "Rezultatet e kerkimit per"
 msgstr "Search results for"
 
-#: list_name.php:70
-#: list_name.php:179
-#: show_movie.php:71
-#: show_movie.php:93
+#: list_name.php:68 list_name.php:177 show_movie.php:70 show_movie.php:92
 msgid "Filmi"
 msgstr "Movie"
 
-#: list_name.php:137
+#: list_name.php:135
 msgid "Asnje film per"
 msgstr "Nothing found for"
 
-#: list_name.php:139
+#: list_name.php:137
 msgid "Titulli"
 msgstr "Title"
 
-#: list_name.php:145
+#: list_name.php:143
 msgid "Asnje rezultat per kerkimin ose nuk ka filma qe fillojne me"
 msgstr "No search results or no movie beginning for the letter"
 
-#: list_name.php:176
+#: list_name.php:174
 msgid "Cover"
 msgstr "Cover"
 
-#: list_name.php:181
+#: list_name.php:179
 msgid "Pershkrimi"
 msgstr "Description"
 
-#: list_name.php:183
-#: show_movie.php:101
+#: list_name.php:181 show_movie.php:100
 msgid "Viti"
 msgstr "Year"
 
-#: list_name.php:220
-#: list_name.php:232
+#: list_name.php:218 list_name.php:230
 msgid "Prapa"
 msgstr "Back"
 
-#: list_name.php:220
-#: list_name.php:226
-#: list_name.php:232
+#: list_name.php:218 list_name.php:224 list_name.php:230
 msgid "Filma"
 msgstr "Movies"
 
-#: list_name.php:226
+#: list_name.php:224
 msgid "Para"
 msgstr "Next"
 
-#: show_movie.php:34
+#: show_movie.php:35
 msgid "Detaje mbi filmin"
 msgstr "Details about this movie"
 
-#: show_movie.php:56
+#: show_movie.php:55
 msgid "Kopertina mungon"
 msgstr "Cover missing"
 
-#: show_movie.php:58
+#: show_movie.php:57
 msgid "Kopertina"
 msgstr "Cover"
 
-#: show_movie.php:75
+#: show_movie.php:74
 msgid "Regjizori"
 msgstr "Director"
 
-#: show_movie.php:79
+#: show_movie.php:78
 msgid "Gjinia"
 msgstr "Genre"
 
-#: show_movie.php:83
+#: show_movie.php:82
 msgid "Kohezgjatja"
 msgstr "Time"
 
-#: show_movie.php:88
+#: show_movie.php:87
 msgid "Personazhet / Aktoret"
 msgstr "Actors / Stars"
 
-#: show_movie.php:97
+#: show_movie.php:96
 msgid "Studio"
 msgstr "Studio"
 
-#: show_movie.php:105
+#: show_movie.php:104
 msgid "Sinopsis"
 msgstr "Synopsis"
-

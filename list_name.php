@@ -21,6 +21,7 @@
  * THE SOFTWARE.
  */
 
+require_once 'include.php';
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -39,15 +40,6 @@
 <center>
 <a href="javascript:history.go(-1)"><img src="img/previous.png"></a>&nbsp;&nbsp;<a href='index.php'><img src="img/home.png"></a>
 <?php
-$locale = "en_US" . ".UTF-8";
-setlocale(LC_ALL, $locale );
-putenv("LC_ALL=$locale");
-putenv("LANGUAGE=$locale");
-bindtextdomain("messages", "./locale");
-textdomain("messages");
-require_once 'dbmodel.php';
-require_once 'utils.php';
-require_once 'inifile.php';
 
 $iniFile = new INIFile('config.ini');
 $display_chunk = $iniFile->getValue('display_chunk','user_config');

@@ -20,16 +20,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-$locale = "sq_AL" . ".UTF-8";
-if (isset($_GET["locale"])) $locale = $_GET["locale"];
-setlocale(LC_ALL, $locale );
-putenv("LC_ALL=$locale");
-putenv("LANGUAGE=$locale");
-bindtextdomain("messages", "./locale");
-textdomain("messages");
 
-require_once 'dbmodel.php';
-require_once 'utils.php';
+require_once 'include.php';
 
 $iniFile = new INIFile('config.ini');
 $app_name = $iniFile->getValue('app_name','user_config');
@@ -49,7 +41,6 @@ $version = $iniFile->getValue('version','user_config');
 
 <body>
 <div id="content">
-<a href="?locale=en_US">English</a> | <a href="?locale=sq_AL">Shqip</a>
 <center><img src="img/logo.jpg" alt=''><br>
 <br>
 
