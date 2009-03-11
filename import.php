@@ -28,97 +28,144 @@ $password = $iniFile->getValue('password','database');
 $username = $iniFile->getValue('username','database');
 $hostname = $iniFile->getValue('hostname','database');
 $database = $iniFile->getValue('database','database');
+$app_name = $iniFile->getValue('app_name','user_config');
+$version = $iniFile->getValue('version','user_config');
 
-$MCImagesDir = $iniFile->getValue('MCImagesDir','import_directives');
-$MCThumbnailsDir = $iniFile->getValue('MCThumbnailsDir','import_directives');
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-$xmlDoc = "collectorz.xml";
-$xslDoc = "xml2sql.xsl";
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="PMD <?php echo $version;?>">
+<link rel="stylesheet" type="text/css" href="style/style.css">
+<title><?php echo  $version . ":  " . $your_full_name; ?></title>
+</head>
 
-$xml = new DOMDocument;
-$xml->load($xmlDoc);
+<body>
+<div id="content">
+<center><img src="img/logo.jpg" alt=''><br>
+<br>
 
-$xsl = new DOMDocument;
-$xsl->load($xslDoc);
+<?php
+print "<p class='header'>$app_name</p>\n";
+print "<p class='header'>Version: $version</p>\n";
+?>
 
-$proc = new XSLTProcessor;
-$proc->importStyleSheet($xsl); // attach the xsl rules
-echo "transform ok";
-$result = $proc->transformToXML($xml);
+<p>
+<form enctype="multipart/form-data" action="<?php echo $SCRIPT_NAME ?>" method="post">
+	<input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
+	<?php echo _("Choose a file to upload"); ?>: <input name="uploadfile" type="file" /><input type="submit" value="<?php echo _('submit')?>" name="import_file" />
+</form>
+<br />
+<?php
+if(isset($_POST['import_file'])) { 
 
-$scriptPath =  pathinfo($_SERVER['SCRIPT_FILENAME']);
-$PMDImagesDir = $scriptPath['dirname'] . "/img/Images";
-$PMDThumbnailsDir = $scriptPath['dirname'] . "/img/Thumbnails";
+	$tempDir = sys_get_temp_dir();
+	$uploadfile = $tempDir . DIRECTORY_SEPARATOR . basename($_FILES['uploadfile']['name']);
 
-$temp = explode(DIRECTORY_SEPARATOR,$MCImagesDir);
-
-
-//heck ..it'll only work on win machines.. :(
-$strToReplace = $temp[0] .
-				DIRECTORY_SEPARATOR . $temp[1] .
-				DIRECTORY_SEPARATOR . $temp[2] .
-				DIRECTORY_SEPARATOR . $temp[3] .
-				DIRECTORY_SEPARATOR . $temp[4] .
-				DIRECTORY_SEPARATOR . $temp[5];
-				
-
-//$strToReplace = "C:/Documents and Settings/Gjergj Sheldija/My Documents/Movie Collector/";				
-echo dir_copy( $MCImagesDir,$PMDImagesDir);
-echo dir_copy( $MCThumbnailsDir , $PMDThumbnailsDir);
-
-$result = explode(";\n",$result);
-
-$link = mysql_connect($hostname, $username, $password);
-if (!$link) {
-    die('Could not connect: ' . mysql_error());
-}
-
-mysql_select_db($database, $link) or die('Could not select database.');
-
-$sqlDrop = "DROP TABLE IF EXISTS `catalog`";
-
-$queryDrop = mysql_query($sqlDrop );
-if (!$queryDrop) {
-    die('Invalid query: ' . mysql_error());
-}
-
-$sqlCreate = "CREATE TABLE `catalog` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `movie` varchar(100) collate utf8_unicode_ci NOT NULL COMMENT 'artist',
-  `cover` text collate utf8_unicode_ci COMMENT 'album_art_url',
-  `plot` text collate utf8_unicode_ci COMMENT 'description',
-  `release_date` int(4) default '1900' COMMENT 'year',
-  `runtime` varchar(20) collate utf8_unicode_ci NOT NULL,
-  `genre` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `cast` text collate utf8_unicode_ci NOT NULL,
-  `director` text collate utf8_unicode_ci COMMENT 'real_name',
-  `studio` varchar(100) collate utf8_unicode_ci default '-' COMMENT 'label',
-  `thumbnail` text collate utf8_unicode_ci,
-  `album` varchar(100) collate utf8_unicode_ci default NULL,
-  `catalog` varchar(20) collate utf8_unicode_ci default '-',
-  `format` varchar(20) collate utf8_unicode_ci default '-',
-  `rating` int(1) default '0',
-  `num_discs` int(10) unsigned default '1',
-  `last_modified` datetime default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
-
-$queryCreate = mysql_query($sqlCreate );
-if (!$queryCreate) {
-    die('Invalid query: ' . mysql_error());
-}
-
-foreach($result as $id => $data ) {
-	$first_pass = str_replace('\\','/',$data);
-	$second_pass = str_replace($strToReplace ,"img/",$first_pass);
-	$query = mysql_query($second_pass );
-	if (!$query) {
+	if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $uploadfile)) {
+	    echo _("File is valid, and was successfully uploaded") . "...<br />";
+	} else {
+	    die( _("Possible file upload attack!")  );
+	}
+	
+	$MCImagesDir = $iniFile->getValue('MCImagesDir','import_directives');
+	$MCThumbnailsDir = $iniFile->getValue('MCThumbnailsDir','import_directives');
+	
+	$xmlDoc = $uploadfile;
+	$xslDoc = "xml2sql.xsl";
+	
+	$xml = new DOMDocument;
+	$xml->load($xmlDoc);
+	
+	$xsl = new DOMDocument;
+	$xsl->load($xslDoc);
+	
+	$proc = new XSLTProcessor;
+	$proc->importStyleSheet($xsl); // attach the xsl rules
+	echo _("transform ok") . "...<br />";
+	$result = $proc->transformToXML($xml);
+	
+	$scriptPath =  pathinfo($_SERVER['SCRIPT_FILENAME']);
+	$PMDImagesDir = $scriptPath['dirname'] . "/img/Images";
+	$PMDThumbnailsDir = $scriptPath['dirname'] . "/img/Thumbnails";
+	
+	$temp = explode(DIRECTORY_SEPARATOR,$MCImagesDir);
+	
+	//heck ..it'll only work on win machines.. :(
+	$strToReplace = $temp[0] .
+					DIRECTORY_SEPARATOR . $temp[1] .
+					DIRECTORY_SEPARATOR . $temp[2] .
+					DIRECTORY_SEPARATOR . $temp[3] .
+					DIRECTORY_SEPARATOR . $temp[4] .
+					DIRECTORY_SEPARATOR . $temp[5];
+					
+	
+	//$strToReplace = "C:/Documents and Settings/Gjergj Sheldija/My Documents/Movie Collector/";				
+	dir_copy( $MCImagesDir,$PMDImagesDir);
+	echo _("image copy ok") . "....<br />";
+	dir_copy( $MCThumbnailsDir , $PMDThumbnailsDir);
+	echo _("thumbnail copy ok") . "....<br />";	
+	$result = explode(";\n",$result);
+	
+	$link = mysql_connect($hostname, $username, $password);
+	if (!$link) {
+	    die('Could not connect: ' . mysql_error());
+	}
+	
+	mysql_select_db($database, $link) or die('Could not select database.');
+	
+	$sqlDrop = "DROP TABLE IF EXISTS `catalog`";
+	
+	$queryDrop = mysql_query($sqlDrop );
+	if (!$queryDrop) {
 	    die('Invalid query: ' . mysql_error());
 	}
+	echo _("table drop ok") . "....<br />";
+	$sqlCreate = "CREATE TABLE `catalog` (
+	  `id` int(10) unsigned NOT NULL auto_increment,
+	  `movie` varchar(100) collate utf8_unicode_ci NOT NULL COMMENT 'artist',
+	  `cover` text collate utf8_unicode_ci COMMENT 'album_art_url',
+	  `plot` text collate utf8_unicode_ci COMMENT 'description',
+	  `release_date` int(4) default '1900' COMMENT 'year',
+	  `runtime` varchar(20) collate utf8_unicode_ci NOT NULL,
+	  `genre` varchar(100) collate utf8_unicode_ci NOT NULL,
+	  `cast` text collate utf8_unicode_ci NOT NULL,
+	  `director` text collate utf8_unicode_ci COMMENT 'real_name',
+	  `studio` varchar(100) collate utf8_unicode_ci default '-' COMMENT 'label',
+	  `thumbnail` text collate utf8_unicode_ci,
+	  `album` varchar(100) collate utf8_unicode_ci default NULL,
+	  `catalog` varchar(20) collate utf8_unicode_ci default '-',
+	  `format` varchar(20) collate utf8_unicode_ci default '-',
+	  `rating` int(1) default '0',
+	  `num_discs` int(10) unsigned default '1',
+	  `last_modified` datetime default '0000-00-00 00:00:00',
+	  PRIMARY KEY  (`id`)
+	) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+	
+	$queryCreate = mysql_query($sqlCreate );
+	if (!$queryCreate) {
+	    die('Invalid query: ' . mysql_error());
+	}
+	echo _("table create ok") . "....<br />";
+	foreach($result as $id => $data ) {
+		$first_pass = str_replace('\\','/',$data);
+		$second_pass = str_replace($strToReplace ,"img/",$first_pass);
+		if(strlen($second_pass) > 6) {
+			$query = mysql_query($second_pass );
+			if (!$query) {
+			    echo "error: " . mysql_error() . "<br />";
+			}
+		}
+	}
+	
+	mysql_close($link);
+	echo _("insert ok") . "....<br />";
+	echo _("import successfully finished") . "....<br />";
+	echo "<br /><br />" . _("You may now chek your movie catalog at") . " : <a href=\"./\">" . _("Home") . "</a>";
 }
-
-mysql_close($link);
-
 
 function dir_copy($srcdir, $dstdir, $offset = '', $verbose = false) {
     if(!isset($offset)) $offset=0;
@@ -164,3 +211,7 @@ function dir_copy($srcdir, $dstdir, $offset = '', $verbose = false) {
     $ret = ($num + $red[0]).','.(($fail-$offset) + $red[1]).','.($sizetotal + $red[2]).','.$fifail.$red[3];
     return $ret; 
 }
+?>
+</center>
+</div>
+</body>

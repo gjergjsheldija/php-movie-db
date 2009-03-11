@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PHP Movie DB\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-11 19:16+0100\n"
+"POT-Creation-Date: 2009-03-11 22:07+0100\n"
 "PO-Revision-Date: 2009-03-11 01:09+0100\n"
 "Last-Translator: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
 "Language-Team: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
@@ -68,6 +68,59 @@ msgstr "Elements per page"
 #: configuration.php:192
 msgid "language"
 msgstr "Language"
+
+#: import.php:59
+msgid "Choose a file to upload"
+msgstr ""
+
+#: import.php:59
+#, fuzzy
+msgid "submit"
+msgstr "Site path"
+
+#: import.php:69
+msgid "File is valid, and was successfully uploaded"
+msgstr "File is valid, and was successfully uploaded"
+
+#: import.php:71
+msgid "Possible file upload attack!"
+msgstr "Possible file upload attack!"
+
+#: import.php:88
+msgid "transform ok"
+msgstr "XML transformation OK"
+
+#: import.php:108
+msgid "image copy ok"
+msgstr "Images copied OK"
+
+#: import.php:110
+msgid "thumbnail copy ok"
+msgstr "Thumbnails copied OK"
+
+#: import.php:126
+msgid "table drop ok"
+msgstr "Table droped OK"
+
+#: import.php:152
+msgid "table create ok"
+msgstr "Table created OK"
+
+#: import.php:165
+msgid "insert ok"
+msgstr "Movie data inserted OK"
+
+#: import.php:166
+msgid "import successfully finished"
+msgstr "Import successfully finished!"
+
+#: import.php:167
+msgid "You may now chek your movie catalog at"
+msgstr "You may now browse your movie catalog at"
+
+#: import.php:167
+msgid "Home"
+msgstr "Catalog"
 
 #: index.php:58
 msgid "Ne baze te titullit"

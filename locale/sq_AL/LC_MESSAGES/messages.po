@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PHP Movie DB\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-11 19:16+0100\n"
+"POT-Creation-Date: 2009-03-11 22:07+0100\n"
 "PO-Revision-Date: 2009-03-11 01:38+0100\n"
 "Last-Translator: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
 "Language-Team: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
@@ -66,6 +66,59 @@ msgstr "Elemente per faqe"
 #: configuration.php:192
 msgid "language"
 msgstr "Gjuha"
+
+#: import.php:59
+msgid "Choose a file to upload"
+msgstr "Zgjidhni file XML per importim"
+
+#: import.php:59
+#, fuzzy
+msgid "submit"
+msgstr "Path i sitit"
+
+#: import.php:69
+msgid "File is valid, and was successfully uploaded"
+msgstr "File eshte i vlefshem dhe upload u krye me sukses"
+
+#: import.php:71
+msgid "Possible file upload attack!"
+msgstr "Problem gjate upload te file"
+
+#: import.php:88
+msgid "transform ok"
+msgstr "Transformimi i XML OK"
+
+#: import.php:108
+msgid "image copy ok"
+msgstr "Kopjimi i pamjeve OK"
+
+#: import.php:110
+msgid "thumbnail copy ok"
+msgstr "Kopjimi i thumbnail OK"
+
+#: import.php:126
+msgid "table drop ok"
+msgstr "Fshirja e tabeles OK"
+
+#: import.php:152
+msgid "table create ok"
+msgstr "Krijimi i tabeles OK"
+
+#: import.php:165
+msgid "insert ok"
+msgstr "Ruajtja e te dhenave OK"
+
+#: import.php:166
+msgid "import successfully finished"
+msgstr "Importimi perfundoj me sukses"
+
+#: import.php:167
+msgid "You may now chek your movie catalog at"
+msgstr "Mund te kontrolloni katalogun tuaj tek"
+
+#: import.php:167
+msgid "Home"
+msgstr "Katalogu"
 
 #: index.php:58
 msgid "Ne baze te titullit"
