@@ -20,18 +20,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-$locale = "en_US" . ".UTF-8";
-setlocale(LC_ALL, $locale );
-putenv("LC_ALL=$locale");
-putenv("LANGUAGE=$locale");
-bindtextdomain("messages", "./locale");
-textdomain("messages");
-
-require_once 'inifile.php';
+require_once 'include.php';
 
 $iniFile = new INIFile('config.ini');
 
-$your_full_name = $iniFile->getValue('app_name','your_full_name');
+$your_full_name = $iniFile->getValue('your_full_name','user_config');
 $version = $iniFile->getValue('version','user_config');
 $app_name = $iniFile->getValue('app_name','user_config');
 
@@ -162,6 +155,7 @@ if (isset($_POST['submitted_user_data'])) {
 	$iniFile->setValue('your_full_name',$_POST['your_full_name'],'user_config');
 	$iniFile->setValue('site',$_POST['site'],'user_config');
 	$iniFile->setValue('display_chunk',$_POST['display_chunk'],'user_config');
+	$iniFile->setValue('language',$_POST['language'],'user_config');
 	$iniFile->save();
 }  
 ?>
@@ -193,6 +187,15 @@ if (isset($_POST['submitted_user_data'])) {
 			<input id="display_chunk" type="text" name="display_chunk" value="<?php echo $iniFile->getValue('display_chunk','user_config') ;  ?>">
 		</td>
 	</tr>
+	<tr>
+		<td align="left">		
+			<label for="language"><?php echo _('language')?> : </label>
+		</td>
+		<td align="left">			
+			<input id="language" type="radio" name="language" value="en_US" <?php echo $iniFile->getValue('language','user_config') == "en_US" ? 'checked' : '' ;  ?>>English</input>
+			<input id="language" type="radio" name="language" value="sq_AL" <?php echo $iniFile->getValue('language','user_config') == "sq_AL" ? 'checked' : '' ;  ?>>Shqip</input>
+		</td>
+	</tr>	
 	<tr>
 		<td colspan="2" align="right">
 			<input type="submit" name="submitted_user_data" value="ruaj">
