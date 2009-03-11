@@ -20,6 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+$locale = "sq_AL" . ".UTF-8";
+if (isset($_GET["locale"])) $locale = $_GET["locale"];
+setlocale(LC_ALL, $locale );
+putenv("LC_ALL=$locale");
+putenv("LANGUAGE=$locale");
+bindtextdomain("messages", "./locale");
+textdomain("messages");
 
 require_once 'dbmodel.php';
 require_once 'utils.php';
@@ -37,12 +44,12 @@ $version = $iniFile->getValue('version','user_config');
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="generator" content="PMD <?php echo $version;?>">
 <link rel="stylesheet" type="text/css" href="style/style.css">
-<title><?php echo "DBF " . $version . ": " . $your_full_name; ?>Filma</title>
+<title><?php echo "DBF " . $version . ":  " . $your_full_name; ?></title>
 </head>
 
 <body>
 <div id="content">
-
+<a href="?locale=en_US">English</a> | <a href="?locale=sq_AL">Shqip</a>
 <center><img src="img/logo.jpg" alt=''><br>
 <br>
 
@@ -57,7 +64,7 @@ print "<p class='header'>Version: $version</p>\n";
 
 <table border="0" width="50%" CELLSPACING=0 CELLPADDING=4>
 	<tr align="left" class="seen">
-		<td width="25%"><strong>Ne baze te titullit:</strong></td>
+		<td width="25%"><strong><?php echo _('Ne baze te titullit');?>:</strong></td>
 		<td>
 			<a href="list_name.php?letter=A&amp;view=ALL">A</A> 
 			<a href="list_name.php?letter=B&amp;view=ALL">B</A> 
@@ -88,16 +95,16 @@ print "<p class='header'>Version: $version</p>\n";
 	</tr>
 
 <tr align="left" class="seen">
-	<td width="20%"><strong>Shih:</strong></td>
+	<td width="20%"><strong><?php echo _('Shih'); ?>:</strong></td>
 	<td>
-		<a href="list_name.php?letter=ALL&amp;view=ALL&amp;sort=movie&amp;dir=ASC&amp;from=0">Te gjithe filmat</a>
+		<a href="list_name.php?letter=ALL&amp;view=ALL&amp;sort=movie&amp;dir=ASC&amp;from=0"><?php echo _('Te gjithe filmat');?></a>
 	</td>
 </tr>
 	<tr align="left" class="seen">
-		<td width="20%"><strong>Kerko:</strong></td>
+		<td width="20%"><strong><?php echo _('Kerko') ?>:</strong></td>
 		<td>
 		<form method="post" id="searchform" action="list_name.php?letter=ALL&amp;view=ALL">
-			<input type="text" value="kerko" name="search_string" onfocus="if (this.value == 'kerko') {this.value = '';}" /> 
+			<input type="text" value="<?php echo _('kerko') ?>" name="search_string" onfocus="if (this.value == '<?php echo _('kerko')?>') {this.value = '';}" /> 
 			<img src="img/search.png">
 			<br /> 
 		</form>
@@ -108,16 +115,13 @@ print "<p class='header'>Version: $version</p>\n";
 
 	<?php
 
-
-	// Connect to the MySQL server
-
-	print "Totali : ";
+	print _('Totali') ." :" ;
 	$db = new dbmodel();
 	$cat_query = $db->loadMovie();
 
-	print "<strong>".count($cat_query)."</strong> filma ";
+	print "<strong>".count($cat_query)." </strong>" . _('filma') ;
 
-	print "<br><br><hr size=1 width=\"40%\"><strong>Filmat e rinj:</strong><br><br>\n\n";
+	print "<br><br><hr size=1 width=\"40%\"><strong>" .  _('Filmat e rinj ') . ":</strong><br><br>\n\n";
 
 ?>
 <table  border="0" width="50%" CELLSPACING="1" CELLPADDING="4">

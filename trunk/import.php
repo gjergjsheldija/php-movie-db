@@ -20,6 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+$locale = "sq_AL" . ".UTF-8";
+if (isset($_GET["locale"])) $locale = $_GET["locale"];
+setlocale(LC_ALL, $locale . ".UTF-8");
+putenv("LC_ALL=$locale");
+putenv("LANGUAGE=$locale");
+bindtextdomain("messages", "./locale");
+textdomain("messages");
+
 require_once 'dbmodel.php';
 
 $iniFile = new INIFile('config.ini');
