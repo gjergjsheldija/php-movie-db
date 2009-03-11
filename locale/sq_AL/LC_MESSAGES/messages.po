@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PHP Movie DB\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-03-11 00:27+0100\n"
+"PO-Revision-Date: 2009-03-11 01:38+0100\n"
+"Last-Translator: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
+"Language-Team: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: configuration.php:67
+msgid "Te dhenat baze"
+msgstr "Te dhenat baze"
+
+#: configuration.php:71
+msgid "Host"
+msgstr "Host"
+
+#: configuration.php:79
+msgid "Db"
+msgstr "Databaze"
+
+#: configuration.php:87
+msgid "User"
+msgstr "Perdoruesi"
+
+#: configuration.php:95
+msgid "Password"
+msgstr "Fjalekalimi"
+
+#: configuration.php:122
+msgid "Te dhenat per file"
+msgstr "Te dhenat per file"
+
+#: configuration.php:126
+msgid "MCImagesDir"
+msgstr "Direktoria e pamjeve e MC"
+
+#: configuration.php:134
+msgid "MCThumbnailsDir"
+msgstr "Direktoria e thumbnails e MC"
+
+#: configuration.php:164
+msgid "Te dhenat personale"
+msgstr "Te dhenat personale"
+
+#: configuration.php:168
+msgid "your_full_name"
+msgstr "Emri juaj"
+
+#: configuration.php:176
+msgid "site"
+msgstr "Path i sitit"
+
+#: configuration.php:184
+msgid "display_chunk"
+msgstr "Elemente per faqe"
+
+#: index.php:60
+msgid "Ne baze te titullit"
+msgstr "Ne baze te titullit"
+
+#: index.php:91
+msgid "Shih"
+msgstr "Shih"
+
+#: index.php:93
+msgid "Te gjithe filmat"
+msgstr "Shfaq te gjithe filmat"
+
+#: index.php:97
+msgid "Kerko"
+msgstr "Kerko"
+
+#: index.php:100
+msgid "kerko"
+msgstr "kerko"
+
+#: index.php:111
+msgid "Totali"
+msgstr "Totali"
+
+#: index.php:115
+msgid "filma"
+msgstr "filma"
+
+#: index.php:117
+msgid "Filmat e rinj "
+msgstr "Filmat e rinj "
+
+#: list_name.php:34
+msgid "Filmat"
+msgstr "Filmat"
+
+#: list_name.php:60
+msgid "Specifikoni nje germe."
+msgstr "Zgjidhni nje shkronje"
+
+#: list_name.php:65
+msgid "Katalogu i filmave per"
+msgstr "Katalogu i filmave i"
+
+#: list_name.php:68
+msgid "Rezultatet e kerkimit per"
+msgstr "Rezultatet e kerkimit per"
+
+#: list_name.php:70
+#: list_name.php:179
+#: show_movie.php:71
+#: show_movie.php:93
+msgid "Filmi"
+msgstr "Filmi"
+
+#: list_name.php:137
+msgid "Asnje film per"
+msgstr "Asnje film per"
+
+#: list_name.php:139
+msgid "Titulli"
+msgstr "Titulli"
+
+#: list_name.php:145
+msgid "Asnje rezultat per kerkimin ose nuk ka filma qe fillojne me"
+msgstr "Asnje rezultat per kerkimin ose nuk ka filma qe fillojne me"
+
+#: list_name.php:176
+msgid "Cover"
+msgstr "Kopertina"
+
+#: list_name.php:181
+msgid "Pershkrimi"
+msgstr "Pershkrimi"
+
+#: list_name.php:183
+#: show_movie.php:101
+msgid "Viti"
+msgstr "Viti"
+
+#: list_name.php:220
+#: list_name.php:232
+msgid "Prapa"
+msgstr "Prapa"
+
+#: list_name.php:220
+#: list_name.php:226
+#: list_name.php:232
+msgid "Filma"
+msgstr "Filma"
+
+#: list_name.php:226
+msgid "Para"
+msgstr "Para"
+
+#: show_movie.php:34
+msgid "Detaje mbi filmin"
+msgstr "Detaje per filmin"
+
+#: show_movie.php:56
+msgid "Kopertina mungon"
+msgstr "Kopertina mungon"
+
+#: show_movie.php:58
+msgid "Kopertina"
+msgstr "Kopertina"
+
+#: show_movie.php:75
+msgid "Regjizori"
+msgstr "Regjizori"
+
+#: show_movie.php:79
+msgid "Gjinia"
+msgstr "Gjinia"
+
+#: show_movie.php:83
+msgid "Kohezgjatja"
+msgstr "Kohezgjatja"
+
+#: show_movie.php:88
+msgid "Personazhet / Aktoret"
+msgstr "Personazhet / Aktoret"
+
+#: show_movie.php:97
+msgid "Studio"
+msgstr "Studio"
+
+#: show_movie.php:105
+msgid "Sinopsis"
+msgstr "Sinopsis"
+

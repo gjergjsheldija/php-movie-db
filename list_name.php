@@ -31,7 +31,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="generator" content="PMD <?php echo $version; ?>">
 <link rel="stylesheet" type="text/css" href="style/style.css">
-<title>Filmat</title>
+<title><?php echo _('Filmat')?></title>
 </head>
 
 <body>
@@ -39,6 +39,12 @@
 <center>
 <a href="javascript:history.go(-1)"><img src="img/previous.png"></a>&nbsp;&nbsp;<a href='index.php'><img src="img/home.png"></a>
 <?php
+$locale = "en_US" . ".UTF-8";
+setlocale(LC_ALL, $locale );
+putenv("LC_ALL=$locale");
+putenv("LANGUAGE=$locale");
+bindtextdomain("messages", "./locale");
+textdomain("messages");
 require_once 'dbmodel.php';
 require_once 'utils.php';
 require_once 'inifile.php';
@@ -57,17 +63,17 @@ else
 
 
 if($_GET[letter] == NULL || $_GET[letter] == "" || $_GET[view] == NULL || $_GET[view] == "")
-	die("Specifikoni nje germe.");
+	die(_('Specifikoni nje germe.'));
 
 $view = $_GET[view];
 
 
-print "<p class='header'>$app_name $version<br>\n Katalogu i filmave i {$your_full_name}</p>\n";
+print "<p class='header'>$app_name $version<br>\n".  _('Katalogu i filmave per') . "{$your_full_name}</p>\n";
 
 if($is_search)
-print "<p class='header'>Rezultatet e kerkimit per : \"$_POST[search_string]\"</p>\n";
+	print "<p class='header'>" . _('Rezultatet e kerkimit per') . " : \"$_POST[search_string]\"</p>\n";
 else
-print "<p class='header'>Filmi: $_GET[letter]</p>\n";
+	print "<p class='header'>" . _('Filmi') . " : " . $_GET[letter] . "</p>\n";
 
 if($_GET[letter] != "ALL") {
 	print_links($_GET[letter], $view);
@@ -134,15 +140,15 @@ $result = $dbModel->searchMovie($query);
 
 if(count($result) == 0) {
 	if($is_search) {
-		print "<br><p class='header'>Asnje film per $_POST[search_string] ";
+		print "<br><p class='header'>" . _('Asnje film per') ." $_POST[search_string] ";
 		if($_POST[search_type] == "movie")
-			print "Titulli";
+			print _('Titulli');
 		else
 			print $_POST[search_type];
 
 		print "</p><br />\n\n";
 	} else {
-		print "<br><p class='header'>Asnje rezultat per kerkimin $view ose nuk ka filma qe fillojne me : $_GET[letter]</p><br /><br />\n\n";
+		print "<br><p class='header'>" . _('Asnje rezultat per kerkimin ose nuk ka filma qe fillojne me') . " : " . $_GET[letter] . " </p><br /><br />\n\n";
 	}
 
 	print "\n<table  border=\"0\" width=\"95%\" cellspacing=\"1\" cellpadding=\"4\">\n<tr align=\"center\"> \n";
@@ -173,14 +179,14 @@ function displayMovies($result, $display_chunk) {
 	// Start a table, with column headers
 	print "\n<table  border=\"0\" width=\"98%\" cellspacing=\"1\" cellpadding=\"4\">\n<tr align=\"center\"> \n";
 	print "\n\t<th width=\"15%\"><img src='$image' style=\"border: none; margin-right: 3px;  padding: 0px;\" alt=''>";
-	print "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=movie&amp;dir=$opposite_dir'>Cover</a></th>";
+	print "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=movie&amp;dir=$opposite_dir'>" . _('Cover') ."</a></th>";
 
 	print "\n\t<th width=\"25%\"><img src='$image' style=\"border: none; margin-right: 3px;  padding: 0px;\" alt=''>" .
-       "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=movie&amp;dir=$opposite_dir'>Filmi</a></th>" .
+       "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=movie&amp;dir=$opposite_dir'>" . _('Filmi') . "</a></th>" .
           "\n\t<th><img src='$image' style=\"border: none; margin-right: 3px;  padding: 0px;\" alt=''>" . 
-       "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=plot&amp;dir=$opposite_dir'>Pershkrimi</a></th>" .
+       "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=plot&amp;dir=$opposite_dir'>" . _('Pershkrimi') . "</a></th>" .
           "\n\t<th><img src='$image' style=\"border: none; margin-right: 3px;  padding: 0px;\" alt=''>" . 
-       "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=year&amp;dir=$opposite_dir'>Viti</a></th>";
+       "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=year&amp;dir=$opposite_dir'>" . _('Viti') . "</a></th>";
 
 	foreach($result as $id => $movie) {
 		// ... start a TABLE row ...
@@ -197,8 +203,7 @@ function displayMovies($result, $display_chunk) {
 		print "\n\t<td><a href=\"show_movie.php?movie=" . $movie['id'] . "\">" . $movie[movie] ."</a>";
 
 		print "</td>\n\t<td align=\"left\">";
-		if($movie['plot'] != NULL || $movie['plot'] != "")		//if a description exists, show icon
-		//print substr($movie['plot'],0,60) . "...";
+		if($movie['plot'] != NULL || $movie['plot'] != "")	
 		print $movie['plot'];
 		print "\n\t</td><td align=\"center\">$movie[release_date]</td>";
 
@@ -218,19 +223,19 @@ function displayMovies($result, $display_chunk) {
 			print "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=$_GET[sort]&amp;dir=$_GET[dir]&amp;from=";
 			$offset = $_GET[from] - $display_chunk;
 			print $offset;
-			print "'><< Prapa $display_chunk Filma</a> | ";
+			print "'><< " . _('Prapa') . $display_chunk . _('Filma') . "</a> | ";
 		}
 
 		 print "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=$_GET[sort]&amp;dir=$_GET[dir]&amp;from=";
 		 $offset = $_GET[from] + $display_chunk;
 		 print $offset;
-		 print "'>Para $display_chunk Filma >></a>";
+		 print "'><< " . _('Para') . $display_chunk . _('Filma') . "</a> | ";
 
 	} else if ($num_of_rows < $display_chunk && ($_GET[from] - $display_chunk) > 0) {
 		 print "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=$_GET[sort]&amp;dir=$_GET[dir]&amp;from=";
 		 $offset = $_GET[from] - $display_chunk;
 		 print $offset;
-		 print "'><< Prapa $display_chunk Filma</a>";
+		 print "'><< " . _('Prapa') . $display_chunk . _('Filma') . "</a> | ";
 	}
 	print "\n<p><br /><br />\n";
 }

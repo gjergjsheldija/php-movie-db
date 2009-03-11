@@ -21,7 +21,6 @@
  * THE SOFTWARE.
  */
 
-session_start();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -32,7 +31,7 @@ session_start();
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="generator" content="PMD <?php echo $version; ?>">
 <link rel="stylesheet" type="text/css" href="style/style.css">
-<title>Detaje mbi filmin</title>
+<title><?php echo _('Detaje mbi filmin') ?></title>
 </head>
 
 <body>
@@ -40,6 +39,13 @@ session_start();
 <center>
 <a href="javascript:history.go(-1)"><img src="img/previous.png"></a>&nbsp;&nbsp;<a href='index.php'><img src="img/home.png"></a>
 <?php
+$locale = "en_US" . ".UTF-8";
+setlocale(LC_ALL, $locale );
+putenv("LC_ALL=$locale");
+putenv("LANGUAGE=$locale");
+bindtextdomain("messages", "./locale");
+textdomain("messages");
+
 require_once 'dbmodel.php';
 require_once 'utils.php';
 
@@ -54,9 +60,9 @@ function displayMovie($movie)  {
 
 	print "<table><tr><td valign=top>";
 	if($movie[0][cover] == NULL || $movie[0][cover] == "") {
-		print "<img src=\"img/notavailable.jpg\" border=0 alt=\"Kopertina mungon\">";
+		print "<img src=\"img/notavailable.jpg\" border=0 alt=\"". _('Kopertina mungon') . "\">";
 	} else {
-		print "<img src=\"". $movie[0][cover] . "\" border=0 alt=\"Kopertina\">";
+		print "<img src=\"". $movie[0][cover] . "\" border=0 alt=\"" . _('Kopertina') . "\">";
 		print "</td>";
 	}
 	
@@ -69,41 +75,41 @@ function displayMovie($movie)  {
 
 	// ... start a TABLE row ...
 	print "\n<tr align=\"left\" class=\"seen\">";
-	print "<td><b>Filmi:</b></td>";
+	print "<td><b>" . _('Filmi') . " :</b></td>";
 	print "<td>" .$movie[0][movie] ."</td>";
 	
 	print "\n<tr align=\"left\" class=\"seen\">";
-	print "<td><b>Regjizori:</b></td>";
+	print "<td><b>" . _('Regjizori') . " :</b></td>";
 	print "<td>" .$movie[0][director] ."</td>";
 	
 	print "\n<tr align=\"left\" class=\"seen\">";
-	print "<td><b>Lloji:</b></td>";
+	print "<td><b>" . _('Gjinia') . " :</b></td>";
 	print "<td>" .$movie[0][genre] ."</td>";	
 	
 	print "\n<tr align=\"left\" class=\"seen\">";
-	print "<td><b>Kohezgjatja:</b></td>";
+	print "<td><b>" . _('Kohezgjatja') . " :</b></td>";
 	print "<td>" .$movie[0][runtime] ."</td>";		
 
 	if($movie[0][cast] != NULL && $movie[0][cast] != ''){
 		print "\n<tr align=\"left\" class=\"seen\">";
-		print "<td><b>Personazhet / Aktoret:</b></td>";
+		print "<td><b>" . _('Personazhet / Aktoret') . " :</b></td>";
 		print "<td>" .$movie[0][cast] ."</td>";
 	}
 
 	print "\n<tr align=\"left\" class=\"seen\">";
-	print "<td><b>Filmi:</b></td>";
+	print "<td><b>" . _('Filmi') . " :</b></td>";
 	print "<td>" . $movie[0][movie] ."</td>";
 
 	print "\n<tr align=\"left\" class=\"seen\">";
-	print "<td><b>Studio:</b></td>";
+	print "<td><b>" . _('Studio') . " :</b></td>";
 	print "<td>" . $movie[0][studio] . "</td>";
 
 	print "\n<tr align=\"left\" class=\"seen\">";
-	print "<td><b>Viti:</b></td>";
+	print "<td><b>" . _('Viti') . " :</b></td>";
 	print "<td>" . $movie[0][release_date] . "</td>";
 
 	print "\n<tr align=\"left\" class=\"seen\">";
-	print "<td><b>Pershkrimi</b></td>";
+	print "<td><b>" . _('Sinopsis') ." :</b></td>";
 	print "<td>" . $movie[0][plot] . "</td>";
 
 

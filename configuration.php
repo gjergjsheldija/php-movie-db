@@ -20,6 +20,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+$locale = "en_US" . ".UTF-8";
+setlocale(LC_ALL, $locale );
+putenv("LC_ALL=$locale");
+putenv("LANGUAGE=$locale");
+bindtextdomain("messages", "./locale");
+textdomain("messages");
 
 require_once 'inifile.php';
 
@@ -36,9 +42,8 @@ $app_name = $iniFile->getValue('app_name','user_config');
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta name="generator" content="Bluefish 1.0.7">
 <link rel="stylesheet" type="text/css" href="style/style.css">
-<title><?php echo "DBF " . $version . ": " . $your_full_name; ?>Filma</title>
+<title><?php echo $version . ": " . $your_full_name; ?></title>
 </head>
 <body>
 <div id="content">
@@ -65,11 +70,11 @@ if (isset($_POST['submitted_base_data'])) {
 ?>
 	<form method="post" action="<?php echo $SCRIPT_NAME ?>">
 	<fieldset>
-	<legend>Te dhenat baze:</legend>
+	<legend><?php echo _('Te dhenat baze') ?>:</legend>
 	<table>
 	<tr>
 		<td align="left">
-		<label for="hostname">Host : </label>
+		<label for="hostname"><?php echo _('Host') ?> : </label>
 		</td>
 		<td align="right">
 		<input id="hostname" type="text" name="hostname" value="<?php echo $iniFile->getValue('hostname','database') ;  ?>">
@@ -77,7 +82,7 @@ if (isset($_POST['submitted_base_data'])) {
 	</tr>
 	<tr>
 		<td align="left">
-			<label for="db">Db : </label>
+			<label for="db"><?php echo _('Db')?> : </label>
 		</td>
 		<td align="right">		
 			<input id = "db" type="text" name="database" value="<?php echo $iniFile->getValue('database','database') ;  ?>">
@@ -85,7 +90,7 @@ if (isset($_POST['submitted_base_data'])) {
 	</tr>
 	<tr>
 		<td align="left">		
-			<label for="user">User : </label>
+			<label for="user"><?php echo _('User') ?> : </label>
 		</td>
 		<td align="right">			
 			<input id="user" type="text" name="username" value="<?php echo $iniFile->getValue('username','database') ;  ?>">
@@ -93,7 +98,7 @@ if (isset($_POST['submitted_base_data'])) {
 	</tr>
 	<tr>
 		<td align="left">		
-			<label for="password">Password : </label>
+			<label for="password"><?php echo _('Password') ?> : </label>
 		</td>
 		<td align="right">			
 			<input id="password" type="text" name="password" value="<?php echo $iniFile->getValue('password','database') ;  ?>">
@@ -120,11 +125,11 @@ if (isset($_POST['submitted_file_data'])) {
 ?>
 	<form method="post" action="<?php echo $SCRIPT_NAME ?>">
 	<fieldset>
-	<legend>Te dhenat per file:</legend>
+	<legend><?php echo _('Te dhenat per file')?>:</legend>
 	<table>
 	<tr>
 		<td align="left">
-		<label for="MCImagesDir">MCImagesDir : </label>
+		<label for="MCImagesDir"><?php echo _('MCImagesDir')?> : </label>
 		</td>
 		<td align="right">
 		<input id="MCImagesDir" type="text" name="MCImagesDir" value="<?php echo $iniFile->getValue('MCImagesDir','import_directives') ;  ?>">
@@ -132,7 +137,7 @@ if (isset($_POST['submitted_file_data'])) {
 	</tr>
 	<tr>
 		<td align="left">		
-			<label for="MCThumbnailsDir">MCThumbnailsDir : </label>
+			<label for="MCThumbnailsDir"><?php echo _('MCThumbnailsDir')?> : </label>
 		</td>
 		<td align="right">			
 			<input id="MCThumbnailsDir" type="text" name="MCThumbnailsDir" value="<?php echo $iniFile->getValue('MCThumbnailsDir','import_directives') ;  ?>">
@@ -162,11 +167,11 @@ if (isset($_POST['submitted_user_data'])) {
 ?>
 	<form method="post" action="<?php echo $SCRIPT_NAME ?>">
 	<fieldset>
-	<legend>Te dhenat personale:</legend>
+	<legend><?php echo _('Te dhenat personale') ?>:</legend>
 	<table>
 	<tr>
 		<td align="left">
-		<label for="your_full_name">your_full_name : </label>
+		<label for="your_full_name"><?php echo _('your_full_name')?> : </label>
 		</td>
 		<td align="right">
 		<input id="your_full_name" type="text" name="your_full_name" value="<?php echo $iniFile->getValue('your_full_name','user_config') ;  ?>">
@@ -174,7 +179,7 @@ if (isset($_POST['submitted_user_data'])) {
 	</tr>
 	<tr>
 		<td align="left">
-			<label for="site">site : </label>
+			<label for="site"><?php echo _('site')?> : </label>
 		</td>
 		<td align="right">		
 			<input id = "site" type="text" name="site" value="<?php echo $iniFile->getValue('site','user_config') ;  ?>">
@@ -182,7 +187,7 @@ if (isset($_POST['submitted_user_data'])) {
 	</tr>
 	<tr>
 		<td align="left">		
-			<label for="display_chunk">display_chunk : </label>
+			<label for="display_chunk"><?php echo _('display_chunk')?> : </label>
 		</td>
 		<td align="right">			
 			<input id="display_chunk" type="text" name="display_chunk" value="<?php echo $iniFile->getValue('display_chunk','user_config') ;  ?>">
