@@ -68,6 +68,8 @@ $strToReplace = $temp[0] .
 				DIRECTORY_SEPARATOR . $temp[4] .
 				DIRECTORY_SEPARATOR . $temp[5];
 				
+
+			
 echo dir_copy( $MCImagesDir,$PMDImagesDir);
 echo dir_copy( $MCThumbnailsDir , $PMDThumbnailsDir);
 

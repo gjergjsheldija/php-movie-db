@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="text" version="1.0" indent="yes" omit-xml-declaration="yes"/>
 	<xsl:template match="movieinfo">
-  		<xsl:for-each select="movielist/movie">INSERT INTO catalog ( id, movie, cover, release_date, plot, runtime, genre, cast, director, studio, thumbnail ) VALUES (
+  		<xsl:for-each select="movielist/movie">INSERT INTO catalog ( id, movie, cover, release_date, plot, runtime, genre, cast, director, studio, last_modified, thumbnail ) VALUES (
   			"<xsl:value-of select="id"/>",
   			"<xsl:value-of select='translate(title,"&apos;", "")'/>",
   			"<xsl:value-of select='translate(coverfront, "&apos;","")'/>",
@@ -20,6 +20,7 @@
   				"<xsl:value-of select='translate(displayname,"&apos;", "")'></xsl:value-of>",
   			</xsl:for-each>""),
   			"<xsl:value-of select='translate(studios/studio/displayname,"&apos;", "")'></xsl:value-of>",
+  			STR_TO_DATE('<xsl:value-of select='lastmodified/date'></xsl:value-of>', '%d.%m.%Y %H:%i:%s'),
   			"<xsl:value-of select="thumbfilepath"/>");
   		</xsl:for-each>
 	</xsl:template>
