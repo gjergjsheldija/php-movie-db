@@ -67,6 +67,10 @@ function displayMovie($movie)  {
 
 	// ... start a TABLE row ...
 	print "\n<tr align=\"left\" class=\"seen\">";
+	print "<td><b>" . _('Kodi') . " :</b></td>";
+	print "<td><strong>" .$movie[0][id] ."</strong></td>";
+	
+	print "\n<tr align=\"left\" class=\"seen\">";
 	print "<td><b>" . _('Filmi') . " :</b></td>";
 	print "<td>" .$movie[0][movie] ."</td>";
 	
