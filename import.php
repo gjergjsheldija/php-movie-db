@@ -82,6 +82,39 @@ if (!$link) {
 
 mysql_select_db($database, $link) or die('Could not select database.');
 
+$sqlDrop = "DROP TABLE IF EXISTS `catalog`";
+
+$queryDrop = mysql_query($sqlDrop );
+if (!$queryDrop) {
+    die('Invalid query: ' . mysql_error());
+}
+
+$sqlCreate = "CREATE TABLE `catalog` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `movie` varchar(100) collate utf8_unicode_ci NOT NULL COMMENT 'artist',
+  `cover` text collate utf8_unicode_ci COMMENT 'album_art_url',
+  `plot` text collate utf8_unicode_ci COMMENT 'description',
+  `release_date` int(4) default '1900' COMMENT 'year',
+  `runtime` varchar(20) collate utf8_unicode_ci NOT NULL,
+  `genre` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `cast` text collate utf8_unicode_ci NOT NULL,
+  `director` text collate utf8_unicode_ci COMMENT 'real_name',
+  `studio` varchar(100) collate utf8_unicode_ci default '-' COMMENT 'label',
+  `thumbnail` text collate utf8_unicode_ci,
+  `album` varchar(100) collate utf8_unicode_ci default NULL,
+  `catalog` varchar(20) collate utf8_unicode_ci default '-',
+  `format` varchar(20) collate utf8_unicode_ci default '-',
+  `rating` int(1) default '0',
+  `num_discs` int(10) unsigned default '1',
+  `last_modified` datetime default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+
+$queryCreate = mysql_query($sqlCreate );
+if (!$queryCreate) {
+    die('Invalid query: ' . mysql_error());
+}
+
 foreach($result as $id => $data ) {
 	$first_pass = str_replace('\\','/',$data);
 	$second_pass = str_replace($strToReplace ,"img/",$first_pass);
