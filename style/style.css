@@ -91,5 +91,6 @@ input:focus, textarea:focus {
   font-weight: bold;
 }
 
-
-
+span.highlight { 
+	background-color: #FFFF00;
+}
