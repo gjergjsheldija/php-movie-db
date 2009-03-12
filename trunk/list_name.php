@@ -179,7 +179,7 @@ function displayMovies($result, $display_chunk) {
        "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=plot&amp;dir=$opposite_dir'>" . _('Pershkrimi') . "</a></th>" .
           "\n\t<th><img src='$image' style=\"border: none; margin-right: 3px;  padding: 0px;\" alt=''>" . 
        "<a href='list_name.php?letter=$_GET[letter]&amp;view=$view&amp;sort=year&amp;dir=$opposite_dir'>" . _('Viti') . "</a></th>";
-
+	
 	foreach($result as $id => $movie) {
 		// ... start a TABLE row ...
 		print "\n<tr align=\"left\"";
@@ -192,11 +192,11 @@ function displayMovies($result, $display_chunk) {
 		}
 
 		print "\n\t<td><a href=\"show_movie.php?movie=" . $movie['id'] . "\"><img src=\"$movie[thumbnail]\"></a></td>";
-		print "\n\t<td><a href=\"show_movie.php?movie=" . $movie['id'] . "\">" . $movie[movie] ."</a>";
+		print "\n\t<td><a href=\"show_movie.php?movie=" . $movie['id'] . "\">" . str_ireplace($_POST[search_string],"<span class=\"highlight\">" . $_POST[search_string] . "</span>" ,$movie[movie]) ."</a>";
 
 		print "</td>\n\t<td align=\"left\">";
 		if($movie['plot'] != NULL || $movie['plot'] != "")	
-		print $movie['plot'];
+		print str_ireplace($_POST[search_string],"<span class=\"highlight\">" . $_POST[search_string] . "</span>" ,$movie['plot']);
 		print "\n\t</td><td align=\"center\">$movie[release_date]</td>";
 
 		print "\n</tr>";
