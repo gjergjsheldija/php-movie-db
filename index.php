@@ -36,6 +36,20 @@ $version = $iniFile->getValue('version','user_config');
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="generator" content="PMD <?php echo $version;?>">
 <link rel="stylesheet" type="text/css" href="style/style.css">
+<link rel="stylesheet" type="text/css" href="style/keyboard.css">
+<script src="js/mootools.js"></script>
+<script src="js/keyboard.js"></script>
+<script type="text/javascript">
+	var textKeyboard = null;
+	/* only input fields are initialized automatically */
+	textKeyboard = new osKeyboard({position:'bottom', id:'kb2'});
+	window.addEvent('domready', function() {
+    	//textKeyboard = new osKeyboard({position:'right', id:'kb2'});
+       	$('search_string').addEvent('click', function(e){ 
+           	textKeyboard.show(e); 
+        }.bindWithEvent(this));
+	});  
+</script>
 <title><?php echo $version . ":  " . $your_full_name; ?></title>
 </head>
 
@@ -95,7 +109,7 @@ print "<p class='header'>Version: $version</p>\n";
 		<td width="20%"><strong><?php echo _('Kerko') ?>:</strong></td>
 		<td>
 		<form method="post" id="searchform" action="list_name.php?letter=ALL&amp;view=ALL">
-			<input type="text" value="<?php echo _('kerko') ?>" name="search_string" onfocus="if (this.value == '<?php echo _('kerko')?>') {this.value = '';}" /> 
+			<input type="text" value="<?php echo _('kerko') ?>" id="search_string" name="search_string" onfocus="if (this.value == '<?php echo _('kerko')?>') {this.value = '';}" /> 
 			<img src="img/search.png">
 			<br /> 
 		</form>
