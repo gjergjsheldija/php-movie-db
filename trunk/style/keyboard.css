@@ -1,0 +1,37 @@
+/* Keyboard Container */
+
+div.keyboard {
+	position:absolute; 
+	z-index: 999; 
+    width: 420px;  
+	display: none;
+	background-color: #373832;
+}
+
+
+/* Key buttons */
+button {	
+   padding: 1px;	
+   height: 40px;
+   width: 40px;
+   margin: 1px;
+   display: inline;
+   border: 1px solid #5c5c5c;	
+   border-right-color: #272822;
+   border-bottom-color: #272822;
+   background-color:#373832;
+   color: #fff;
+}
+
+button:hover {
+    background-color: #272822;	
+    border: 1px solid black;	
+    border-right-color: #5c5c5c;
+    border-bottom-color: #5c5c5c;
+}
+
+.pushed{
+    background-color: #490b00;
+}
+
+
