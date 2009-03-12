@@ -42,12 +42,10 @@ $version = $iniFile->getValue('version','user_config');
 <script type="text/javascript">
 	var textKeyboard = null;
 	/* only input fields are initialized automatically */
-	textKeyboard = new osKeyboard({position:'bottom', id:'kb2'});
+	//textKeyboard = new osKeyboard({position:'bottom', id:'kb2'});
 	window.addEvent('domready', function() {
-    	//textKeyboard = new osKeyboard({position:'right', id:'kb2'});
-       	$('search_string').addEvent('click', function(e){ 
-           	textKeyboard.show(e); 
-        }.bindWithEvent(this));
+    	textKeyboard = new osKeyboard({position:'right', id:'kb2'});
+       	//$('search_string').addEvent('click', function(e){textKeyboard.show(e);}.bindWithEvent(this));
 	});  
 </script>
 <title><?php echo $version . ":  " . $your_full_name; ?></title>
