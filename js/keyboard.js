@@ -34,7 +34,7 @@ osKeyboard = new Class({
       this.cont.innerHTML += '<div style="display:block; white-space:ignore;">'
                        +'<button id="shiftKey" class="" value="&#8593;">&uarr;</button>'
                        +'<button value=" " style="width:130px;">space</button>'
-                       +'<button value="enter" style="width:130px;">enter</button>'
+                       +'<button value="enter" style="width:130px;">enter   &crarr;</button>'
                        +'<button value="&#8592;">&larr;</button></div>';           
 
       $(document.body).adopt(this.cont);
