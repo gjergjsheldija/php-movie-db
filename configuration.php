@@ -47,6 +47,7 @@ $app_name = $iniFile->getValue('app_name','user_config');
 print "<p class='header'>$app_name</p>\n";
 print "<p class='header'>Version: $version</p>\n";
 ?>
+<a href="administration.php"><img src="img/administration.png" alt="" style="border:none;"></a>
 <table>
 <tr align="left">
 <td>

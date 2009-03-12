@@ -6,14 +6,23 @@ html {
 .seen {
     background-color: white;
 }
-.seen:hover {
+.seen:hover, .administration_seen:hover {
     background-color: #f0f0f0;
 }
-.seen-over {
+.seen-over, .administration_seen-over {
     background-color: #f0f0f0;
 }
 
+.administration_seen {
+    background-color: white;
+    border: 1px solid #ccc;
+}
 
+.admin_menu {
+	float: left;	
+	padding: 10px; 
+	border:none;
+}
 
 .seen_alt {
     background-color: #f5f5f5;
