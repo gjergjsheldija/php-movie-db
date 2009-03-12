@@ -52,7 +52,7 @@ $version = $iniFile->getValue('version','user_config');
 print "<p class='header'>$app_name</p>\n";
 print "<p class='header'>Version: $version</p>\n";
 ?>
-
+<a href="administration.php"><img src="img/administration.png" alt="" style="border:none;"></a>
 <p>
 <form enctype="multipart/form-data" action="<?php echo $SCRIPT_NAME ?>" method="post">
 	<input type="hidden" name="MAX_FILE_SIZE" value="10000000" />

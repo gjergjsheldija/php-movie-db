@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PHP Movie DB\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-11 22:07+0100\n"
+"POT-Creation-Date: 2009-03-12 18:28+0100\n"
 "PO-Revision-Date: 2009-03-11 01:38+0100\n"
 "Last-Translator: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
 "Language-Team: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
@@ -15,55 +15,63 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: configuration.php:66
+#: administration.php:59
+msgid "configure_desc"
+msgstr "Konfigurimi i sistemit : baza e te dhenave, info personale, direktorite e Movie Collectorz"
+
+#: administration.php:63
+msgid "import_desc"
+msgstr "Faqja e importimit. Nga ketu ju mund te importoni file XML te gjeneruar nga Movie Collectorz"
+
+#: configuration.php:67
 msgid "Te dhenat baze"
 msgstr "Te dhenat baze"
 
-#: configuration.php:70
+#: configuration.php:71
 msgid "Host"
 msgstr "Host"
 
-#: configuration.php:78
+#: configuration.php:79
 msgid "Db"
 msgstr "Databaze"
 
-#: configuration.php:86
+#: configuration.php:87
 msgid "User"
 msgstr "Perdoruesi"
 
-#: configuration.php:94
+#: configuration.php:95
 msgid "Password"
 msgstr "Fjalekalimi"
 
-#: configuration.php:121
+#: configuration.php:122
 msgid "Te dhenat per file"
 msgstr "Te dhenat per file"
 
-#: configuration.php:125
+#: configuration.php:126
 msgid "MCImagesDir"
 msgstr "Direktoria e pamjeve e MC"
 
-#: configuration.php:133
+#: configuration.php:134
 msgid "MCThumbnailsDir"
 msgstr "Direktoria e thumbnails e MC"
 
-#: configuration.php:164
+#: configuration.php:165
 msgid "Te dhenat personale"
 msgstr "Te dhenat personale"
 
-#: configuration.php:168
+#: configuration.php:169
 msgid "your_full_name"
 msgstr "Emri juaj"
 
-#: configuration.php:176
+#: configuration.php:177
 msgid "site"
 msgstr "Path i sitit"
 
-#: configuration.php:184
+#: configuration.php:185
 msgid "display_chunk"
 msgstr "Elemente per faqe"
 
-#: configuration.php:192
+#: configuration.php:193
 msgid "language"
 msgstr "Gjuha"
 

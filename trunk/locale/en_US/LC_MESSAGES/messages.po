@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PHP Movie DB\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-11 22:07+0100\n"
+"POT-Creation-Date: 2009-03-12 18:28+0100\n"
 "PO-Revision-Date: 2009-03-11 01:09+0100\n"
 "Last-Translator: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
 "Language-Team: Gjergj Sheldija <gjergj.sheldija@gmail.com>\n"
@@ -17,61 +17,69 @@ msgstr ""
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED STATES\n"
 
-#: configuration.php:66
+#: administration.php:59
+msgid "configure_desc"
+msgstr "Main system configuration : database, personal info, Movie Collectorz directories"
+
+#: administration.php:63
+msgid "import_desc"
+msgstr "Import screen. From here you can import the Movie Collectorz generated XML"
+
+#: configuration.php:67
 msgid "Te dhenat baze"
 msgstr "Basic Info"
 
-#: configuration.php:70
+#: configuration.php:71
 msgid "Host"
 msgstr "Host"
 
-#: configuration.php:78
+#: configuration.php:79
 msgid "Db"
 msgstr "Database"
 
-#: configuration.php:86
+#: configuration.php:87
 msgid "User"
 msgstr "Perdoruesi"
 
-#: configuration.php:94
+#: configuration.php:95
 msgid "Password"
 msgstr "Fjalekalimi"
 
-#: configuration.php:121
+#: configuration.php:122
 msgid "Te dhenat per file"
 msgstr "File Info"
 
-#: configuration.php:125
+#: configuration.php:126
 msgid "MCImagesDir"
 msgstr "MC image directory"
 
-#: configuration.php:133
+#: configuration.php:134
 msgid "MCThumbnailsDir"
 msgstr "MC thumbnails directory"
 
-#: configuration.php:164
+#: configuration.php:165
 msgid "Te dhenat personale"
 msgstr "Personal info"
 
-#: configuration.php:168
+#: configuration.php:169
 msgid "your_full_name"
 msgstr "Your name"
 
-#: configuration.php:176
+#: configuration.php:177
 msgid "site"
 msgstr "Site path"
 
-#: configuration.php:184
+#: configuration.php:185
 msgid "display_chunk"
 msgstr "Elements per page"
 
-#: configuration.php:192
+#: configuration.php:193
 msgid "language"
 msgstr "Language"
 
 #: import.php:59
 msgid "Choose a file to upload"
-msgstr ""
+msgstr "Choose a file to upload"
 
 #: import.php:59
 #, fuzzy
